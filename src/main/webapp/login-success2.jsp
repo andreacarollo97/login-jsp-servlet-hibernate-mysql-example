@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +6,9 @@
     <title>super admin</title>
 </head>
 <body>
+<%@include file="header2.jsp"%>
 <div align="center">
     <h1>Sei un super admin</h1>
-
-    <a href="LogoutServlet">logout</a>
 </div>
 </body>
 </html>

@@ -32,7 +32,6 @@ public class LoginController extends HttpServlet {
         try {
             authenticate(request, response);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -24,6 +24,9 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "date")
+    private String date;
+
     @Column(name = "username")
     private String username;
 
@@ -79,5 +82,13 @@ public class User implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

@@ -34,12 +34,14 @@ public class UserController extends HttpServlet {
     private void register(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
+        String date = request.getParameter("date");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         User user = new User();
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setDate(date);
         user.setUsername(username);
         user.setPassword(password);
 
