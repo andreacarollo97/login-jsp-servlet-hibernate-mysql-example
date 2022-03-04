@@ -9,6 +9,8 @@
 <body>
 <div align="center">
     <h1>Sei un utente normale</h1>
+
+    <a href="LogoutServlet">logout</a>
 </div>
 </body>
 </html>

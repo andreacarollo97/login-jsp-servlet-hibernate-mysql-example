@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.javaguides.hibernate.dao.UserDao;
 
@@ -44,14 +45,30 @@ public class LoginController extends HttpServlet {
 
 
         if (loginDao.validate(username, password) == 0) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login-success.jsp");
-            dispatcher.forward(request, response);
+            HttpSession oldSession = request.getSession(false);
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
+
+            HttpSession currentSession = request.getSession();
+            currentSession.setAttribute("user", username);
+            currentSession.setMaxInactiveInterval(5*60);
+
+            response.sendRedirect("login-success.jsp");
         }
         else if (loginDao.validate(username, password) == 1) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login-success2.jsp");
-            dispatcher.forward(request, response);
+            HttpSession oldSession = request.getSession(false);
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
+
+            HttpSession currentSession = request.getSession();
+            currentSession.setAttribute("user", username);
+            currentSession.setMaxInactiveInterval(5*60);
+
+            response.sendRedirect("login-success2.jsp");
         } else {
-            throw new Exception("Login not successful..");
+            response.sendRedirect("login.jsp");
         }
     }
 
