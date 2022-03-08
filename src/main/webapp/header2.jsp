@@ -15,10 +15,10 @@
 
             <ul class="navigation">
                 <a href="parcoAuto.jsp"><li>Parco Auto</li></a>
-                <a href="register.jsp"><li>Customers</li></a>
+                <a href="user-list.jsp"><li>Customers</li></a>
                 <a href="prenotazioni.jsp"><li>Prenotazioni</li></a>
                 <a href="profilo.jsp"><li>Profilo</li></a>
-                <a href="LogoutServlet"><li>Logout</li></a>
+                <a href="LogoutController"><li>Logout</li></a>
             </ul>
 
         </div>

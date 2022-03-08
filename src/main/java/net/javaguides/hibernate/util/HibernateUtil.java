@@ -1,14 +1,16 @@
 package net.javaguides.hibernate.util;
 
 import java.util.Properties;
-
+import net.javaguides.hibernate.model.User;
+import net.javaguides.hibernate.model.Auto;
+import net.javaguides.hibernate.model.Prenotazione;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import net.javaguides.hibernate.model.User;
+
 
 /**
  * Java based configuration
@@ -38,6 +40,8 @@ public class HibernateUtil {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Prenotazione.class);
+                configuration.addAnnotatedClass(Auto.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

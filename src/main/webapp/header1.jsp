@@ -16,7 +16,7 @@
             <ul class="navigation">
                 <a href="parcoAuto.jsp"><li>Parco Auto</li></a>
                 <a href="profilo.jsp"><li>Profilo</li></a>
-                <a href="<%=request.getContextPath()%>/LogoutServlet"><li>Logout</li></a>
+                <a href="<%=request.getContextPath()%>/LogoutController"><li>Logout</li></a>
             </ul>
 
         </div>

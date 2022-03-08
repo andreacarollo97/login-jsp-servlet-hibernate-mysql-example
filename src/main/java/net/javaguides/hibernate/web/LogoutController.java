@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "LogoutServlet", value = "/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "LogoutController", value = "/LogoutController")
+public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
