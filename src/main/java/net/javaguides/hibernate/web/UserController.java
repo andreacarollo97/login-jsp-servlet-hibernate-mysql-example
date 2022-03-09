@@ -16,7 +16,7 @@ import net.javaguides.hibernate.model.User;
 
 
 
-@WebServlet("/")
+@WebServlet(name = "UserController", value="/user")
 public class UserController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDao userDao;
@@ -32,23 +32,26 @@ public class UserController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getServletPath();
+        String action = "";
+        if (request.getParameter("pathUser") != null){
+            action = request.getParameter("pathUser");
+        }
 
         try {
             switch (action) {
-                case "/new":
+                case "new":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "insert":
                     insertUser(request, response);
                     break;
-                case "/delete":
+                case "delete":
                     deleteUser(request, response);
                     break;
-                case "/edit":
+                case "edit":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "update":
                     updateUser(request, response);
                     break;
                 default:
@@ -104,7 +107,7 @@ public class UserController extends HttpServlet {
         user.setPassword(password);
 
         userDao.saveUser(user);
-        response.sendRedirect("list");
+        response.sendRedirect("user");
     }
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response)
@@ -125,7 +128,7 @@ public class UserController extends HttpServlet {
         user.setPassword(password);
 
         userDao.updateUser(user);
-        response.sendRedirect("list");
+        response.sendRedirect("user");
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)
@@ -136,7 +139,7 @@ public class UserController extends HttpServlet {
         user.setId(id);
 
         userDao.deleteUser(id);
-        response.sendRedirect("list");
+        response.sendRedirect("user");
     }
 
 

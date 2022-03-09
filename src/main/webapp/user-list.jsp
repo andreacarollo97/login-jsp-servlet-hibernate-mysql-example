@@ -8,11 +8,14 @@
 <body>
 <center>
     <h1>User Management</h1>
-    <h2>
-        <a href="new">Add New User</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="list">List All Users</a>
 
+    <c:url var="UserNew" value="/user"><c:param name="pathUser" value="new"/></c:url>
+    <c:url var="User" value="/user"></c:url>
+
+    <h2>
+        <a href="${UserNew}">Add New User</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="${User}">List All User</a>
     </h2>
 </center>
 <div align="center">
@@ -35,9 +38,17 @@
                 <td><c:out value="${user.username}" /></td>
                 <td><c:out value="${user.password}" /></td>
                 <td>
-                    <a href="edit?id=<c:out value='${user.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${user.id}' />">Delete</a>
+                    <c:url var="UserEdit" value="/user">
+                        <c:param name="pathUser" value="edit"/>
+                        <c:param name="id" value="${user.id}"/>
+                    </c:url>
+                    <a href="${UserEdit}">Edit</a>
+
+                    <c:url var="UserDelete" value="/user">
+                        <c:param name="pathUser" value="delete"/>
+                        <c:param name="id" value="${user.id}"/>
+                    </c:url>
+                    <a href="${UserDelete}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

@@ -4,7 +4,6 @@ import net.javaguides.hibernate.model.Prenotazione;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import net.javaguides.hibernate.model.User;
 import net.javaguides.hibernate.util.HibernateUtil;
 
 import java.util.List;

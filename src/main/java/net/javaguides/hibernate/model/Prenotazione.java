@@ -32,7 +32,7 @@ public class Prenotazione implements Serializable {
 
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

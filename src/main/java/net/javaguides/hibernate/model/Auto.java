@@ -13,7 +13,7 @@ public class Auto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "targa")
     private String targa;
@@ -27,28 +27,20 @@ public class Auto implements Serializable {
     @OneToMany(mappedBy = "auto")
     private List<Prenotazione> prenotazioni;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getTarga() {
         return targa;
     }
 
     public void setTarga(String targa) {
         this.targa = targa;
-    }
-
-    public int getAuto_id() {
-        return id;
-    }
-
-    public void setAuto_id(int id) {
-        this.id = id;
-    }
-
-    public List<Prenotazione> getPrenotazioni() {
-        return prenotazioni;
-    }
-
-    public void setPrenotazioni(List<Prenotazione> prenotazioni) {
-        this.prenotazioni = prenotazioni;
     }
 
     public String getModello() {
@@ -65,5 +57,13 @@ public class Auto implements Serializable {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public List<Prenotazione> getPrenotazioni() {
+        return prenotazioni;
+    }
+
+    public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+        this.prenotazioni = prenotazioni;
     }
 }

@@ -8,19 +8,23 @@
 <body>
 <center>
     <h1>Prenotazioni Management</h1>
-    <h2>
-        <a href="new">Add New Prenotazione</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="list">List All Prenotazioni</a>
+    <c:url var="PrenotazioneInsert" value="/prenotazione"><c:param name="pathPrenotazione" value="insert"/></c:url>
+    <c:url var="PrenotazioneNew" value="/prenotazione"><c:param name="pathPrenotazione" value="new"/></c:url>
+    <c:url var="PrenotazioneUpdate" value="/prenotazione"><c:param name="pathPrenotazione" value="update"/></c:url>
+    <c:url var="Prenotazione" value="/prenotazione"></c:url>
 
+    <h2>
+        <a href="${PrenotazioneNew}">Add New Prenotazione</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="${Prenotazione}">List All Prenotazioni</a>
     </h2>
 </center>
 <div align="center">
     <c:if test="${prenotazione.id != null}">
-    <form action="update" method="post">
+    <form action="${PrenotazioneUpdate}" method="post">
         </c:if>
         <c:if test="${prenotazione.id == null}">
-        <form action="insert" method="post">
+        <form action="${PrenotazioneInsert}" method="post">
             </c:if>
             <table border="1" cellpadding="5">
                 <caption>

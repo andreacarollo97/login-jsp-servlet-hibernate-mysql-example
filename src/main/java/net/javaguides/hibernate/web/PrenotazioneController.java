@@ -17,7 +17,7 @@ import net.javaguides.hibernate.model.Prenotazione;
 
 
 
-@WebServlet("/p")
+@WebServlet(name = "PrenotazioneController", value="/prenotazione")
 public class PrenotazioneController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private PrenotazioneDao prenotazioneDao;
@@ -33,23 +33,26 @@ public class PrenotazioneController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getServletPath();
+        String action = "";
+        if (request.getParameter("pathPrenotazione") != null){
+            action = request.getParameter("pathPrenotazione");
+        }
 
         try {
             switch (action) {
-                case "/new":
+                case "new":
                     showNewFormP(request, response);
                     break;
-                case "/insert":
+                case "insert":
                     insertPrenotazione(request, response);
                     break;
-                case "/delete":
+                case "delete":
                     deletePrenotazione(request, response);
                     break;
-                case "/edit":
+                case "edit":
                     showEditFormP(request, response);
                     break;
-                case "/update":
+                case "update":
                     updatePrenotazione(request, response);
                     break;
                 default:
@@ -102,7 +105,7 @@ public class PrenotazioneController extends HttpServlet {
         prenotazione.setTarga(targa);
 
         prenotazioneDao.savePrenotazione(prenotazione);
-        response.sendRedirect("listp");
+        response.sendRedirect("prenotazione");
     }
 
     private void updatePrenotazione(HttpServletRequest request, HttpServletResponse response)
@@ -119,8 +122,8 @@ public class PrenotazioneController extends HttpServlet {
         prenotazione.setDateEnd(dateEnd);
         prenotazione.setTarga(targa);
 
-        prenotazioneDao.savePrenotazione(prenotazione);
-        response.sendRedirect("listp");
+        prenotazioneDao.updatePrenotazione(prenotazione);
+        response.sendRedirect("prenotazione");
     }
 
     private void deletePrenotazione(HttpServletRequest request, HttpServletResponse response)
@@ -131,7 +134,7 @@ public class PrenotazioneController extends HttpServlet {
         prenotazione.setId(id);
 
         prenotazioneDao.deletePrenotazione(id);
-        response.sendRedirect("listp");
+        response.sendRedirect("prenotazione");
     }
 
 

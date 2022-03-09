@@ -8,11 +8,14 @@
 <body>
 <center>
     <h1>Prenotazioni Management</h1>
-    <h2>
-        <a href="new">Add New Prenotazione</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="list">List All Prenotazioni</a>
 
+    <c:url var="PrenotazioneNew" value="/prenotazione"><c:param name="pathPrenotazione" value="new"/></c:url>
+    <c:url var="Prenotazione" value="/prenotazione"></c:url>
+
+    <h2>
+        <a href="${PrenotazioneNew}">Add New Prenotazione</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="${Prenotazione}">List All Prenotazioni</a>
     </h2>
 </center>
 <div align="center">
@@ -31,9 +34,17 @@
                 <td><c:out value="${prenotazione.dateEnd}" /></td>
                 <td><c:out value="${prenotazione.targa}" /></td>
                 <td>
-                    <a href="edit?id=<c:out value='${prenotazione.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${prenotazione.id}' />">Delete</a>
+                    <c:url var="PrenotazioneEdit" value="/prenotazione">
+                        <c:param name="pathPrenotazione" value="edit"/>
+                        <c:param name="id" value="${prenotazione.id}"/>
+                    </c:url>
+                    <a href="${PrenotazioneEdit}">Edit</a>
+
+                    <c:url var="PrenotazioneDelete" value="/prenotazione">
+                        <c:param name="pathPrenotazione" value="delete"/>
+                        <c:param name="id" value="${prenotazione.id}"/>
+                    </c:url>
+                    <a href="${PrenotazioneDelete}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

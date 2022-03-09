@@ -8,19 +8,23 @@
 <body>
 <center>
     <h1>User Management</h1>
-    <h2>
-        <a href="new">Add New User</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="list">List All Users</a>
+    <c:url var="UserInsert" value="/user"><c:param name="pathUser" value="insert"/></c:url>
+    <c:url var="UserNew" value="/user"><c:param name="pathUser" value="new"/></c:url>
+    <c:url var="UserUpdate" value="/user"><c:param name="pathUser" value="update"/></c:url>
+    <c:url var="User" value="/user"></c:url>
 
+    <h2>
+        <a href="${UserNew}">Add New User</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="${User}">List All User</a>
     </h2>
 </center>
 <div align="center">
     <c:if test="${user.id != null}">
-    <form action="update" method="post">
+    <form action="${UserUpdate}" method="post">
         </c:if>
         <c:if test="${user.id == null}">
-        <form action="insert" method="post">
+            <form action="${UserInsert}" method="post">
             </c:if>
             <table border="1" cellpadding="5">
                 <caption>
