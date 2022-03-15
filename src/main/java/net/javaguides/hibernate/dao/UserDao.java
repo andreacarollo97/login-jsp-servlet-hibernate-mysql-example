@@ -148,6 +148,7 @@ public class UserDao {
 
             listOfUser = session.createQuery("from User").getResultList();
 
+
             // commit transaction
             transaction.commit();
         } catch (Exception e) {
@@ -157,6 +158,26 @@ public class UserDao {
             e.printStackTrace();
         }
         return listOfUser;
+    }
+
+    public User getByUsername(String username) {
+
+        Transaction transaction = null;
+        User user = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            user = (User) session.createQuery("From User U WHERE U.username = :userName").setParameter("userName", username).uniqueResult();
+            
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return user;
     }
 
 

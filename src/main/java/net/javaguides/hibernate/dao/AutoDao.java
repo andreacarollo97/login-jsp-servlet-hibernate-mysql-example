@@ -120,6 +120,27 @@ public class AutoDao {
         }
         return listOfAuto;
     }
+    public List< Auto > getAllAuto2() {
+
+        Transaction transaction = null;
+        List < Auto > listOfAuto = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+
+
+            listOfAuto = session.createQuery("from Auto").getResultList();
+
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfAuto;
+    }
 
 
 }

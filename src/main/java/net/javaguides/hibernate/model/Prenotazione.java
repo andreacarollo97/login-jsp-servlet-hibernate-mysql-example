@@ -1,6 +1,7 @@
 package net.javaguides.hibernate.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -14,13 +15,13 @@ public class Prenotazione implements Serializable {
     private Integer id;
 
     @Column(name = "dateStart")
-    private String dateStart;
+    private Date dateStart;
 
     @Column(name = "dateEnd")
-    private String dateEnd;
+    private Date dateEnd;
 
-    @Column(name = "targa")
-    private String targa;
+    @Column(name = "stato")
+    private int stato;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -40,28 +41,43 @@ public class Prenotazione implements Serializable {
         this.id = id;
     }
 
-    public String getDateStart() {
+    public Date getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(String dateStart) {
+    public void setDateStart(Date dateStart) {
         this.dateStart = dateStart;
     }
 
-    public String getDateEnd() {
+    public Date getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(String dateEnd) {
+    public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
 
-    public String getTarga() {
-        return targa;
+    public int getStato() {
+        return stato;
     }
 
-    public void setTarga(String targa) {
-        this.targa = targa;
+    public void setStato(int stato) {
+        this.stato = stato;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Auto getAuto() {
+        return auto;
+    }
+
+    public void setAuto(Auto auto) {
+        this.auto = auto;
+    }
 }

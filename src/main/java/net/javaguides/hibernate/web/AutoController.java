@@ -58,6 +58,9 @@ public class AutoController extends HttpServlet {
                 case "update":
                     updateAuto(request, response);
                     break;
+                case "auto2":
+                    listAuto2(request, response);
+                    break;
                 default:
                     listAuto(request, response);
                     break;
@@ -72,6 +75,14 @@ public class AutoController extends HttpServlet {
         List <Auto> listAuto = autoDao.getAllAuto();
         request.setAttribute("listAuto", listAuto);
         RequestDispatcher dispatcher = request.getRequestDispatcher("auto-list.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void listAuto2(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List <Auto> listAuto2 = autoDao.getAllAuto2();
+        request.setAttribute("listAuto2", listAuto2);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("auto-list-customer.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -99,7 +110,7 @@ public class AutoController extends HttpServlet {
             throws SQLException, IOException {
         String targa = request.getParameter("targa");
         String modello = request.getParameter("modello");
-        String marca = request.getParameter("date");
+        String marca = request.getParameter("marca");
 
 
         Auto auto = new Auto();
@@ -116,7 +127,7 @@ public class AutoController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String targa = request.getParameter("targa");
         String modello = request.getParameter("modello");
-        String marca = request.getParameter("date");
+        String marca = request.getParameter("marca");
 
         Auto auto = new Auto();
         auto.setId(id);

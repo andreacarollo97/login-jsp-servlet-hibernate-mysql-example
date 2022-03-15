@@ -2,6 +2,9 @@ package net.javaguides.hibernate.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -58,7 +61,7 @@ public class UserController extends HttpServlet {
                     listUser(request, response);
                     break;
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | ParseException ex) {
             throw new ServletException(ex);
         }
     }
@@ -92,17 +95,18 @@ public class UserController extends HttpServlet {
     }
 
     private void insertUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, IOException, ParseException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String date = request.getParameter("date");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        Date dateOB = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 
         User user = new User();
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setDate(date);
+        user.setDate(dateOB);
         user.setUsername(username);
         user.setPassword(password);
 
@@ -111,19 +115,20 @@ public class UserController extends HttpServlet {
     }
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, IOException, ParseException {
         int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String date = request.getParameter("date");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        Date dateOB = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 
         User user = new User();
         user.setId(id);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setDate(date);
+        user.setDate(dateOB);
         user.setUsername(username);
         user.setPassword(password);
 

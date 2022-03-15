@@ -2,7 +2,7 @@ package net.javaguides.hibernate.web;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 import net.javaguides.hibernate.dao.UserDao;
 
 
-@WebServlet("/login")
+
+@WebServlet(name = "Login", value = "/Login")
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDao loginDao;
@@ -50,7 +51,7 @@ public class LoginController extends HttpServlet {
             }
 
             HttpSession currentSession = request.getSession();
-            currentSession.setAttribute("user", username);
+            currentSession.setAttribute("customer", username);
             currentSession.setMaxInactiveInterval(5*60);
 
             response.sendRedirect("login-success.jsp");
@@ -62,7 +63,7 @@ public class LoginController extends HttpServlet {
             }
 
             HttpSession currentSession = request.getSession();
-            currentSession.setAttribute("user", username);
+            currentSession.setAttribute("admin", username);
             currentSession.setMaxInactiveInterval(5*60);
 
             response.sendRedirect("login-success2.jsp");
@@ -70,6 +71,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("login.jsp");
         }
     }
+
 
 
 }

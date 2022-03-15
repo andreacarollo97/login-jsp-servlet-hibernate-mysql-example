@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
@@ -14,9 +13,9 @@
             </div>
 
             <ul class="navigation">
-                <a href="parcoAuto.jsp"><li>Parco Auto</li></a>
+                <a href="auto-list.jsp"><li>Parco Auto</li></a>
                 <a href="user-list.jsp"><li>Customers</li></a>
-                <a href="prenotazioni.jsp"><li>Prenotazioni</li></a>
+                <a href="prenotazione-list.jsp"><li>Prenotazioni</li></a>
                 <a href="profilo.jsp"><li>Profilo</li></a>
                 <a href="LogoutController"><li>Logout</li></a>
             </ul>

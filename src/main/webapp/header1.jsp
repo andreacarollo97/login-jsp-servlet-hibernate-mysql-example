@@ -13,9 +13,10 @@
             </div>
 
             <ul class="navigation">
-                <a href="parcoAuto.jsp"><li>Parco Auto</li></a>
+                <a href="prenotazione-form.jsp"><li>Prenota</li></a>
+                <a href="auto-list-customer.jsp"><li>Parco Auto</li></a>
                 <a href="profilo.jsp"><li>Profilo</li></a>
-                <a href="<%=request.getContextPath()%>/LogoutController"><li>Logout</li></a>
+                <a href="LogoutController"><li>Logout</li></a>
             </ul>
 
         </div>

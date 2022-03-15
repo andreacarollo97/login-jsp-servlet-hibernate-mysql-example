@@ -1,6 +1,7 @@
 package net.javaguides.hibernate.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class User implements Serializable {
     private String lastName;
 
     @Column(name = "date")
-    private String date;
+    private Date date;
 
     @Column(name = "username")
     private String username;
@@ -95,11 +96,11 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
